@@ -175,5 +175,4 @@ if [ "$(whoami)" != "root" ] ; then
     exec sudo "$0" "$@"
 else
     "$1"
-    A
 fi
