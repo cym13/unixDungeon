@@ -30,7 +30,7 @@ make_base() {
 
     # Make users
     chroot dungeon /usr/sbin/useradd -m -s /bin/bash -U -p "password"   user
-    chroot dungeon /usr/sbin/useradd -m -s /bin/bash -U -p "$(genname)" kikoo
+    chroot dungeon /usr/sbin/useradd -m -s /bin/bash -U -p "$(genname 1)" kikoo
 }
 
 make_challenges() {
