@@ -2,6 +2,7 @@
 set -e
 
 export PATH="/bin:/usr/bin:/sbin:/usr/sbin:$PATH"
+export HOME='/home/user'
 
 make() {
     if [ ! -d dungeon ] ; then
@@ -35,7 +36,7 @@ make_base() {
     BASHRC='home/user/.bashrc'
     echo 'echo "Use ls to list files in the current directory,"' >> "$BASHRC"
     echo 'echo "cd to change directory"' >> "$BASHRC"
-    echo 'cd "$HOME"' >> "$BASHRC"
+    echo 'cd "/home/user/"' >> "$BASHRC"
 }
 
 make_challenges() {
