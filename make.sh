@@ -30,6 +30,12 @@ make_base() {
     # Make users
     chroot dungeon /usr/sbin/useradd -m -s /bin/bash -U -p "password"   user
     chroot dungeon /usr/sbin/useradd -m -s /bin/bash -U -p "$(genname 1)" kikoo
+
+    # Edit .bashrc
+    BASHRC='home/user/.bashrc'
+    echo 'echo "Use ls to list files in the current directory,"' >> "$BASHRC"
+    echo 'echo "cd to change directory"' >> "$BASHRC"
+    echo 'cd "$HOME"' >> "$BASHRC"
 }
 
 make_challenges() {
