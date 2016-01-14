@@ -162,7 +162,7 @@ enter() {
     if [ ! -d dungeon ] ; then
         make
     fi
-    chroot --userspec=user dungeon /bin/bash --rcfile "/home/user/.bashrc" \
+    chroot --userspec=user dungeon /bin/bash --rcfile "/home/user/.bashrc"
 }
 
 if [ -z "$1" ] ; then
