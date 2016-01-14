@@ -10,7 +10,15 @@ make() {
     make_challenges
 }
 
+check_deps() {
+    if [ -z "$(which debootstrap)" ] || [ -z "$(which apg)" ] ; then
+        apt-get install debootstrap
+    fi
+}
+
 make_base() {
+    check_deps
+
     # Setup system
     mkdir dungeon
     debootstrap jessie ./dungeon
@@ -21,8 +29,8 @@ make_base() {
         useradd
 
     # Make users
-    chroot dungeon useradd -m -s /bin/bash -U -p "password"   user
-    chroot dungeon useradd -m -s /bin/bash -U -p "$(genname)" kikoo
+    chroot dungeon /usr/sbin/useradd -m -s /bin/bash -U -p "password"   user
+    chroot dungeon /usr/sbin/useradd -m -s /bin/bash -U -p "$(genname)" kikoo
 }
 
 make_challenges() {
@@ -167,4 +175,5 @@ if [ "$(whoami)" != "root" ] ; then
     exec sudo "$0" "$@"
 else
     "$1"
+    A
 fi
