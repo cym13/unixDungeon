@@ -25,8 +25,7 @@ make_base() {
 
     # Install programms
     chroot dungeon apt-get install \
-        bash                       \
-        useradd
+        bash
 
     # Make users
     chroot dungeon /usr/sbin/useradd -m -s /bin/bash -U -p "password"   user
@@ -35,7 +34,7 @@ make_base() {
 
 make_challenges() {
     cd dungeon
-    last_challenge=10
+    last_challenge=11
     i=0
     for name in $(genname $last_challenge | xargs echo) ; do
         echo $i
@@ -163,7 +162,7 @@ enter() {
     if [ ! -d dungeon ] ; then
         make
     fi
-    chroot --userspec=user dungeon /bin/bash
+    chroot --userspec=user dungeon /bin/bash --rcfile "/home/user/.bashrc" \
 }
 
 if [ -z "$1" ] ; then
